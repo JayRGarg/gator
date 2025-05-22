@@ -1,0 +1,10 @@
+{
+  "connections": [
+    {
+      "name": "gator",
+      "dialect": "postgres",
+      "connectionString": "postgresql://jayrgarg@localhost:5432/gator"
+    }
+  ]
+}
+
