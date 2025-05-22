@@ -27,6 +27,7 @@ func main() {
 	st := &state.State{ Db: dbQueries, Conf: &conf }
     cmds := cli.Commands{ CmdMap: make(map[string]func(*state.State, cli.Command) error) }
     cmds.Register("login", cli.HandlerLogin)
+    cmds.Register("register", cli.HandlerRegister)
     // for k, _ := range cmds.CmdMap {
     //     fmt.Println(k, "value is")
     // }
@@ -46,7 +47,7 @@ func main() {
 
     err = cmds.Run(st, cmd)
     if err != nil {
-        fmt.Printf("Error running command: %v\n", err)
+        fmt.Printf("%v\n", err)
         os.Exit(1)
     }
 
