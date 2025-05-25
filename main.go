@@ -28,6 +28,15 @@ func main() {
     cmds := cli.Commands{ CmdMap: make(map[string]func(*state.State, cli.Command) error) }
     cmds.Register("login", cli.HandlerLogin)
     cmds.Register("register", cli.HandlerRegister)
+	cmds.Register("reset", cli.HandleReset)
+	cmds.Register("users", cli.HandleUsers)
+	cmds.Register("agg", cli.HandleAgg)
+	cmds.Register("addfeed", cli.MiddlewareLoggedIn(cli.HandleAddFeed))
+	cmds.Register("feeds", cli.HandleFeeds)
+	cmds.Register("follow", cli.MiddlewareLoggedIn(cli.HandleFollow))
+	cmds.Register("following", cli.MiddlewareLoggedIn(cli.HandleFollowing))
+	cmds.Register("unfollow", cli.MiddlewareLoggedIn(cli.HandleUnfollow))
+	cmds.Register("browse", cli.MiddlewareLoggedIn(cli.HandleBrowse))
     // for k, _ := range cmds.CmdMap {
     //     fmt.Println(k, "value is")
     // }
